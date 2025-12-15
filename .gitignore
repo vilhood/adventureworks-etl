@@ -1,0 +1,11 @@
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Configuración sensible
+config/config.ini
+
+# SO / editor
+.vscode/
+.DS_Store
