@@ -10,6 +10,10 @@ Módulo de conexión a bases de datos para el proceso ETL.
 Este script centraliza la creación de motores SQLAlchemy para las bases
 de datos fuente y destino (PostgreSQL), utilizando parámetros definidos
 en un archivo de configuración externo (config.ini).
+
+config.ini debe de configurar sourceBD habilitando un port, requiere de password y user de la base de datos.
+
+destinationBD debe de configurar usuario,contraseña, nombre de la base de datos destino, host y port
 """
 
 
