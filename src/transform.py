@@ -1,11 +1,31 @@
 import pandas as pd
 import numpy as np
 
+"""
+Módulo de transformaciones del ETL.
+
+Contiene funciones para transformar dimensiones y tablas de hechos
+siguiendo un modelo dimensional (estrella).
+"""
+
+
+
 # =========================================================
 # DimDate
 # =========================================================
 
 def transform_dim_date(start_date='2005-01-01', end_date='2014-12-31'):
+
+    """
+    Genera la dimensión tiempo (DimDate).
+
+    Args:
+        start_date (str): Fecha inicial (YYYY-MM-DD).
+        end_date (str): Fecha final (YYYY-MM-DD).
+
+    Returns:
+        pd.DataFrame: DataFrame con la dimensión fecha."""
+        
     print("Generando DimDate...")
 
     df = pd.DataFrame({

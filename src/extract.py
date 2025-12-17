@@ -1,9 +1,28 @@
 import pandas as pd
 from src.utils import get_db_engine
 
+"""
+Módulo de extracción (Extract) del proceso ETL.
+
+Este script contiene las funciones encargadas de extraer datos desde la
+base de datos fuente (PostgreSQL) para alimentar dimensiones y tablas
+de hechos del Data Warehouse, siguiendo un modelo dimensional (estrella).
+"""
+
 
 def _execute_query(query, table_name, engine):
-    """Función auxiliar para ejecutar una consulta"""
+    """
+Ejecuta una consulta SQL y retorna el resultado como DataFrame.
+
+Args:
+    query (str): Consulta SQL a ejecutar.
+    table_name (str): Nombre lógico de la tabla/dimensión/hecho.
+    engine (sqlalchemy.Engine): Engine de conexión a la base de datos.
+
+Returns:
+    pd.DataFrame | None: DataFrame con los datos extraídos o None si falla.
+"""
+
     try:
         print(f"Extrayendo datos de {table_name}...")
         df = pd.read_sql(query, engine)
@@ -18,7 +37,20 @@ def _execute_query(query, table_name, engine):
 # DIMENSIONES
 # ========================
 
+
+
 def extract_dim_product(engine):
+    """    
+    Extrae la dimensión Producto desde la base de datos fuente.
+
+    Args:
+        engine (sqlalchemy.Engine): Engine de conexión a la base de datos.
+
+    Returns:
+        pd.DataFrame | None: Dimensión Producto."""
+
+ 
+    
     query = """
         SELECT 
             p.productid AS ProductKey,

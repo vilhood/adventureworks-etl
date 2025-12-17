@@ -1,3 +1,14 @@
+"""
+Script principal de orquestación del proceso ETL.
+
+Este módulo coordina la ejecución completa del flujo ETL:
+- Extract: obtención de datos desde la base de datos fuente.
+- Transform: aplicación de reglas de negocio y modelado dimensional.
+- Load: carga de dimensiones y tablas de hechos en el Data Warehouse.
+
+El proceso sigue un modelo dimensional tipo estrella.
+"""
+
 from src.utils import get_db_engine
 from src.extract import (
     extract_dim_product,
@@ -22,6 +33,14 @@ from src.load import load_data
 
 
 def main():
+    """
+    Ejecuta el proceso ETL completo.
+
+    Establece conexiones a las bases de datos fuente y destino,
+    extrae los datos necesarios, aplica las transformaciones
+    correspondientes y carga los resultados en el Data Warehouse."""
+
+
     print("Iniciando proceso ETL...")
 
     source_engine = get_db_engine("SOURCE_DB")

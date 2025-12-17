@@ -1,23 +1,35 @@
 import pandas as pd
 from sqlalchemy import types
 
+"""
+Módulo de carga (Load) del proceso ETL.
+
+Este script se encarga de cargar DataFrames transformados en tablas del
+Data Warehouse (PostgreSQL), utilizando SQLAlchemy y pandas. Incluye
+control opcional de tipos de datos para dimensiones específicas como DimDate.
+"""
+
 
 def load_data(df, table_name, engine, if_exists='append', schema='public'):
     """
-    Carga un DataFrame en una tabla específica en la base de datos de destino (PostgreSQL).
+Carga un DataFrame en una tabla de la base de datos destino (PostgreSQL).
 
-    Argumentos:
-        df (pd.DataFrame): DataFrame a cargar
-        table_name (str): Nombre de la tabla destino
-        engine (sqlalchemy.engine.Engine): Motor SQLAlchemy del DW
-        if_exists (str): 'fail', 'replace' o 'append'
-        schema (str): Esquema destino (PostgreSQL usa 'public' por defecto)
-    """
+Args:
+    df (pd.DataFrame): DataFrame a cargar.
+    table_name (str): Nombre de la tabla destino.
+    engine (sqlalchemy.engine.Engine): Engine de conexión al Data Warehouse.
+    if_exists (str, optional): Acción si la tabla existe ('fail', 'replace', 'append').
+    schema (str, optional): Esquema destino. Por defecto 'public'.
+
+Raises:
+    Exception: Si ocurre un error durante la carga.
+"""
+
     print(f"Cargando datos en la tabla: {schema}.{table_name}...")
 
     dtype_map = {}
 
-    # Blueprint SOLO para DimDate (opcional pero recomendado)
+
     if table_name.lower() == 'dimdate':
         dtype_map = {
             'datekey': types.Integer(),

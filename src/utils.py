@@ -4,11 +4,26 @@ from sqlalchemy.engine import URL
 import os
 
 
+"""
+Módulo de conexión a bases de datos para el proceso ETL.
+
+Este script centraliza la creación de motores SQLAlchemy para las bases
+de datos fuente y destino (PostgreSQL), utilizando parámetros definidos
+en un archivo de configuración externo (config.ini).
+"""
+
+
+
 def get_db_engine(db_type='SOURCE_DB'):
     """
-    Crea y retorna un motor de SQLAlchemy para PostgreSQL.
-    db_type puede ser: SOURCE_DB o DESTINATION_DB
-    """
+    Crea y retorna un motor SQLAlchemy para PostgreSQL.
+
+Args:
+    db_type (str): Tipo de base de datos a conectar.
+                   Valores esperados: 'SOURCE_DB' o 'DESTINATION_DB'.
+
+Returns:
+    sqlalchemy.engine.Engine | None: Engine de conexión o None si falla."""
     config = configparser.ConfigParser()
     config_path = os.path.join(
         os.path.dirname(__file__), '..', 'config', 'config.ini'
