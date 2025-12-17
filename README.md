@@ -9,7 +9,7 @@ El resultado final es un Data Warehouse poblado con **dimensiones** y **dos data
 ---
 
 ## 🧠 Arquitectura General
-
+```bash
 PostgreSQL (OLTP)
 ↓
 EXTRACT
@@ -18,13 +18,12 @@ TRANSFORM
 ↓
 PostgreSQL (DW)
 
-
-Todo el proceso es **automatizado** y se ejecuta con un solo comando.
+```
 
 ---
 
 ## 🗂️ Estructura del Proyecto
-
+```bash
 ETL/
 │
 ├── src/
@@ -40,7 +39,7 @@ ETL/
 ├── requirements.txt # Dependencias del proyecto
 ├── .gitignore
 └── README.md
-
+```
 ---
 
 ## ⚙️ Requisitos
@@ -75,12 +74,12 @@ pip install -r requirements.txt
 ### Configuracion:
 
 Crear el archivo:
-
+```bash
 config/config.ini
-
+```
 
 Con el siguiente contenido (ajustar credenciales):
-
+```bash
 [SOURCE_DB]
 host=localhost
 port=5432
@@ -94,3 +93,11 @@ port=5432
 database=nombre de la base de datos destino
 username=postgres
 password=tu constraseña
+```
+
+### Ejecucion del proyecto:
+
+Ejecuta:
+```bash
+python main.py
+```
